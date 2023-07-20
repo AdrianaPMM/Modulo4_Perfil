@@ -1,8 +1,10 @@
 package Modelo;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import Vista.Principal_0;
+
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 
 public class Mdl_Medicinas {
     
@@ -84,25 +86,57 @@ public class Mdl_Medicinas {
         } 
     }
     
-     //Metodo leer
-    public boolean readMedicina(Mdl_Medicinas MdlMedicinas)
-    {
-        try {
-           PreparedStatement readMedicina = ConexionSQL.getConexion().
-           prepareStatement("Select idMedicina, nombreMedicina, precioMedicina, cantidadMedicina, solucionMedicina, observacionMedicina From tbMedicinas");
-           
-           readMedicina.executeUpdate();
-           return true;
-           
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-            return false;
-        } 
+//     //Metodo leer
+//    public boolean readMedicina(Mdl_Medicinas MdlMedicinas)
+//    {
+//        try {
+//           PreparedStatement readMedicina = ConexionSQL.getConexion().
+//           prepareStatement("Select idMedicina, nombreMedicina, precioMedicina, cantidadMedicina, solucionMedicina, observacionMedicina From tbMedicinas");
+//           
+//           readMedicina.executeUpdate();
+//           return true;
+//           
+//        } catch (SQLException e) {
+//            System.out.println(e.toString());
+//            return false;
+//        } 
+//    }
+//    
+       public void mostrar(Principal_0 vistaMedicina){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object []{"idMedicina","nombreMedicina", "precioMedicina", "cantidadMedicina", "solucionMedicina", "observacionMedicina"});
+
+        try{
+            Statement statement =  (Statement) ConexionSQL.getConexion().createStatement();
+            String query = "SELECT * FROM tbMedicinas";
+
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("idMedicina"),rs.getString("nombreMedicina"),rs.getString("precioMedicina"), rs.getString("cantidadMedicina"), rs.getString("solucionMedicina"),  rs.getString("observacionMedicina") });
+
+            }
+            
+            vistaMedicina.jTable1.setModel(modelo);
+
+        }catch(SQLException ex){
+
+            System.out.println(ex.toString());
+
+        }
+
     }
     
     //Metodo actualizar
-    public boolean updateMedicina(Mdl_Medicinas MdlMedicinas)
+    public boolean updateMedicina(Mdl_Medicinas MdlMedicinas, Principal_0 vistaMedicina)
     {
+        
+        int filaSeleccionada = vistaMedicina.jTable1.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String miId = vistaMedicina.jTable1.getValueAt(filaSeleccionada, 0).toString();
+        
+        
         try {
            PreparedStatement updateMedicina = ConexionSQL.getConexion().
            prepareStatement("Update tbMedicinas Set " +
@@ -116,9 +150,10 @@ public class Mdl_Medicinas {
            updateMedicina.setInt(3, MdlMedicinas.getCantidadMedicina());
            updateMedicina.setString(4, MdlMedicinas.getSolucionMedicina());
            updateMedicina.setString(5, MdlMedicinas.getObservacionMedicina());
-           updateMedicina.setInt(6, MdlMedicinas.getIdMedicina());
+           updateMedicina.setInt(6, Integer.parseInt(miId));
            
            updateMedicina.executeUpdate();
+            System.out.println(miId);
            JOptionPane.showMessageDialog(null, "Medicina Actualizada");
            return true;
            

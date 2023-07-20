@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.Cntrl_Medicinas;
@@ -18,7 +14,6 @@ public class Principal_0 extends javax.swing.JFrame {
      
     public Principal_0() {
         initComponents();
-        Id = 4;
     }
 
     public void cleanTxt()
@@ -143,6 +138,7 @@ public class Principal_0 extends javax.swing.JFrame {
         jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         jTable1.setBackground(new java.awt.Color(204, 204, 204));
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -154,6 +150,11 @@ public class Principal_0 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 640, 260));
@@ -199,6 +200,10 @@ public class Principal_0 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnActualizarMouseClicked
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+mdlMedicinas.updateMedicina(mdlMedicinas, this);
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +238,7 @@ public class Principal_0 extends javax.swing.JFrame {
                 Principal_0 frmPrincipal = new Principal_0();
                 Cntrl_Medicinas cntrl_Medicinas = new Cntrl_Medicinas(mdlMedicinas, frmPrincipal);
                 
+               mdlMedicinas.mostrar(frmPrincipal);
                 frmPrincipal.setVisible(true);
             }
         });
@@ -250,7 +256,7 @@ public class Principal_0 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtObservacion;

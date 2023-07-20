@@ -43,7 +43,7 @@ public class Cntrl_Medicinas implements ActionListener {
            modeloMedicinas.setObservacionMedicina(vistaMedicinas.txtObservacion.getText());
            modeloMedicinas.setIdMedicina(vistaMedicinas.Id);
            
-           modeloMedicinas.updateMedicina(modeloMedicinas);
+           modeloMedicinas.updateMedicina(modeloMedicinas, vistaMedicinas);
      }
      
        if(e.getSource() == vistaMedicinas.btnEliminar)
