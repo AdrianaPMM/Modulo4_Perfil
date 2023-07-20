@@ -104,7 +104,7 @@ public class Mdl_Medicinas {
 //    
        public void mostrar(Principal_0 vistaMedicina){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object []{"idMedicina","nombreMedicina", "precioMedicina", "cantidadMedicina", "solucionMedicina", "observacionMedicina"});
+        modelo.setColumnIdentifiers(new Object []{"idMedicina","Nombre", "Precio", "Cantidad", "Solucion", "Observacion"});
 
         try{
             Statement statement =  (Statement) ConexionSQL.getConexion().createStatement();
@@ -129,14 +129,8 @@ public class Mdl_Medicinas {
     }
     
     //Metodo actualizar
-    public boolean updateMedicina(Mdl_Medicinas MdlMedicinas, Principal_0 vistaMedicina)
-    {
-        
-        int filaSeleccionada = vistaMedicina.jTable1.getSelectedRow();
-        //Obtenemos el id de la fila seleccionada
-        String miId = vistaMedicina.jTable1.getValueAt(filaSeleccionada, 0).toString();
-        
-        
+    public boolean updateMedicina(Mdl_Medicinas MdlMedicinas)
+    {        
         try {
            PreparedStatement updateMedicina = ConexionSQL.getConexion().
            prepareStatement("Update tbMedicinas Set " +
@@ -150,10 +144,10 @@ public class Mdl_Medicinas {
            updateMedicina.setInt(3, MdlMedicinas.getCantidadMedicina());
            updateMedicina.setString(4, MdlMedicinas.getSolucionMedicina());
            updateMedicina.setString(5, MdlMedicinas.getObservacionMedicina());
-           updateMedicina.setInt(6, Integer.parseInt(miId));
+           updateMedicina.setInt(6, MdlMedicinas.getIdMedicina());
            
            updateMedicina.executeUpdate();
-            System.out.println(miId);
+            System.out.println(MdlMedicinas.getIdMedicina());
            JOptionPane.showMessageDialog(null, "Medicina Actualizada");
            return true;
            

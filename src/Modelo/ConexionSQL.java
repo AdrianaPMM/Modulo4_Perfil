@@ -10,10 +10,10 @@ public class ConexionSQL {
     public static Connection getConexion(){
         
          //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver://localhost:50214;" // <- Editar por su puerto de SQL
+        String conexionUrl  = "jdbc:sqlserver://localhost:49789;" // <- Editar por su puerto de SQL
                             + "databaseName=FarmaciasAJ;" // <- Editar por su base de datos
                             + "user=sa;"
-                            + "password=itr2023;" 
+                            + "password=yupiyolo123;" 
                             + "encrypt=true;trustServerCertificate=true";
         
         //Retornamos la conexion

@@ -39,6 +39,9 @@ public class Principal_0 extends javax.swing.JFrame {
         txtCantidad = new javax.swing.JTextField();
         txtSolucion = new javax.swing.JTextField();
         txtObservacion = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -122,11 +125,21 @@ public class Principal_0 extends javax.swing.JFrame {
         txtObservacion.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 190, 30));
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Observacion");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 80, 30));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Solucion.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 80, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Precio.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 80, 30));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Farmacias AJ.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 290, 60));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cantidad.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nombre.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
@@ -201,7 +214,12 @@ public class Principal_0 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-mdlMedicinas.updateMedicina(mdlMedicinas, this);
+            
+        int filaSeleccionada = jTable1.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String MiId = jTable1.getValueAt(filaSeleccionada, 0).toString();
+        Id = Integer.parseInt(MiId);
+        System.out.println(Id);
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
@@ -238,7 +256,7 @@ mdlMedicinas.updateMedicina(mdlMedicinas, this);
                 Principal_0 frmPrincipal = new Principal_0();
                 Cntrl_Medicinas cntrl_Medicinas = new Cntrl_Medicinas(mdlMedicinas, frmPrincipal);
                 
-               mdlMedicinas.mostrar(frmPrincipal);
+                mdlMedicinas.mostrar(frmPrincipal);
                 frmPrincipal.setVisible(true);
             }
         });
@@ -254,6 +272,9 @@ mdlMedicinas.updateMedicina(mdlMedicinas, this);
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
