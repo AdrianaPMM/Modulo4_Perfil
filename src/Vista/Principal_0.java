@@ -23,11 +23,11 @@ public class Principal_0 extends javax.swing.JFrame {
 
     public void cleanTxt()
     {
-        txtCantidad.setText(" ");
-        txtNombre.setText(" ");
-        txtObservacion.setText(" ");
-        txtPrecio.setText(" ");
-        txtSolucion.setText(" ");
+        txtCantidad.setText("");
+        txtNombre.setText("");
+        txtObservacion.setText("");
+        txtPrecio.setText("");
+        txtSolucion.setText("");
     }
     
     @SuppressWarnings("unchecked")
