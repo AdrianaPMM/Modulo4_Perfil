@@ -125,7 +125,7 @@ public class Mdl_Medicinas {
         } 
     }
     
-         //Metodo eliminar
+    //Metodo eliminar
     public boolean deleteMedicina(Mdl_Medicinas MdlMedicinas)
     {
         try {
