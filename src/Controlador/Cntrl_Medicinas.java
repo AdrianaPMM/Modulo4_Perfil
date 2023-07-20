@@ -30,6 +30,7 @@ public class Cntrl_Medicinas implements ActionListener {
            modeloMedicinas.setSolucionMedicina(vistaMedicinas.txtSolucion.getText());
            modeloMedicinas.setObservacionMedicina(vistaMedicinas.txtObservacion.getText());
            
+           vistaMedicinas.cleanTxt();
            modeloMedicinas.addMedicina(modeloMedicinas);
        }
      

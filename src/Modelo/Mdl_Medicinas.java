@@ -2,6 +2,7 @@ package Modelo;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class Mdl_Medicinas {
     
@@ -74,6 +75,7 @@ public class Mdl_Medicinas {
            addMedicina.setString(5, MdlMedicinas.getObservacionMedicina());
            
            addMedicina.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Medicina Agregada");
            return true;
            
         } catch (SQLException e) {
@@ -104,10 +106,10 @@ public class Mdl_Medicinas {
         try {
            PreparedStatement updateMedicina = ConexionSQL.getConexion().
            prepareStatement("Update tbMedicinas Set " +
-"nombreMedicina = ?, precioMedicina = ?, " +
-"cantidadMedicina = ?, solucionMedicina = ?, " +
-"observacionMedicina =  ?" +
-"Where idMedicina = ?");
+" nombreMedicina = ?, precioMedicina = ?, " +
+" cantidadMedicina = ?, solucionMedicina = ?, " +
+" observacionMedicina =  ?" +
+" Where idMedicina = ?");
            
            updateMedicina.setString(1, MdlMedicinas.getNombreMedicina());
            updateMedicina.setDouble(2, MdlMedicinas.getPrecioMedicina()); //Podria dar error
@@ -117,6 +119,7 @@ public class Mdl_Medicinas {
            updateMedicina.setInt(6, MdlMedicinas.getIdMedicina());
            
            updateMedicina.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Medicina Actualizada");
            return true;
            
         } catch (SQLException e) {
@@ -135,6 +138,7 @@ public class Mdl_Medicinas {
           deleteMedicina.setInt(1, MdlMedicinas.getIdMedicina());
            
            deleteMedicina.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Medicina Eliminada");
            return true;
            
         } catch (SQLException e) {
