@@ -4,15 +4,17 @@
  */
 package Vista;
 
+import Controlador.Cntrl_Medicinas;
+import Modelo.Mdl_Medicinas;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class Principal_0 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal_0
-     */
+   public int Id = 0;
+   
     public Principal_0() {
         initComponents();
     }
@@ -31,8 +33,8 @@ public class Principal_0 extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        txtNombreMedicina = new javax.swing.JTextField();
-        txtprecio = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtSolucion = new javax.swing.JTextField();
         txtObservacion = new javax.swing.JTextField();
@@ -84,13 +86,13 @@ public class Principal_0 extends javax.swing.JFrame {
         });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 140, 40));
 
-        txtNombreMedicina.setBackground(new java.awt.Color(243, 201, 162));
-        txtNombreMedicina.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtNombreMedicina, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, 30));
+        txtNombre.setBackground(new java.awt.Color(243, 201, 162));
+        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, 30));
 
-        txtprecio.setBackground(new java.awt.Color(243, 201, 162));
-        txtprecio.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 190, 30));
+        txtPrecio.setBackground(new java.awt.Color(243, 201, 162));
+        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 190, 30));
 
         txtCantidad.setBackground(new java.awt.Color(243, 201, 162));
         txtCantidad.setForeground(new java.awt.Color(0, 0, 0));
@@ -195,15 +197,19 @@ public class Principal_0 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal_0().setVisible(true);
+                Mdl_Medicinas mdlMedicinas = new Mdl_Medicinas();
+                Principal_0 frmPrincipal = new Principal_0();
+                Cntrl_Medicinas cntrl_Medicinas = new Cntrl_Medicinas(mdlMedicinas, frmPrincipal);
+                
+                frmPrincipal.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -213,10 +219,10 @@ public class Principal_0 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtNombreMedicina;
-    private javax.swing.JTextField txtObservacion;
-    private javax.swing.JTextField txtSolucion;
-    private javax.swing.JTextField txtprecio;
+    public javax.swing.JTextField txtCantidad;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtObservacion;
+    public javax.swing.JTextField txtPrecio;
+    public javax.swing.JTextField txtSolucion;
     // End of variables declaration//GEN-END:variables
 }

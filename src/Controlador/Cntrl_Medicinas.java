@@ -15,7 +15,7 @@ public class Cntrl_Medicinas implements ActionListener {
         this.vistaMedicinas = vistaMedicinas;
         
         this.vistaMedicinas.btnAgregar.addActionListener(this);
-        this.vistaMedicinas.btnEditar.addActionListener(this);
+        this.vistaMedicinas.btnActualizar.addActionListener(this);
         this.vistaMedicinas.btnEliminar.addActionListener(this);
     }
     
@@ -33,7 +33,7 @@ public class Cntrl_Medicinas implements ActionListener {
            modeloMedicinas.addMedicina(modeloMedicinas);
        }
      
-     if(e.getSource() == vistaMedicinas.btnEditar)
+     if(e.getSource() == vistaMedicinas.btnActualizar)
      {
            modeloMedicinas.setNombreMedicina(vistaMedicinas.txtNombre.getText());
            modeloMedicinas.setPrecioMedicina(Double.parseDouble(vistaMedicinas.txtPrecio.getText()));
